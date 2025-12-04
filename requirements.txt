@@ -5,7 +5,7 @@ pandas==1.5.1
 matplotlib==3.6.2
 seaborn==0.12.1
 numpy==1.23.4
-kbcstorage @ git+https://github.com/keboola/sapi-python-client.git@276bcebfc0224f89d8ec5e9dd0b94cc15a6596b9
+kbcstorage==0.9.4
 
 
 
