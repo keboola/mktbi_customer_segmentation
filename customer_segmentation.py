@@ -13,7 +13,7 @@ import seaborn as sns
 
 client = Client(st.secrets.url, st.secrets.key) 
 
-@st.experimental_memo(ttl=7200)
+@st.cache_data(ttl=7200)
 def read_df(table_id, index_col=None, date_col=None):
     client.tables.export_to_file(table_id, '.')
     table_name = table_id.split(".")[-1]
