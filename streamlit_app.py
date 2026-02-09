@@ -17,6 +17,8 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+st.write(f"Environment: {os.environ.get('environment', 'not set')}")
+
 input_dir = '/data/in/tables/'
 client = Client(st.secrets.kbc_url, st.secrets.kbc_token)
 
