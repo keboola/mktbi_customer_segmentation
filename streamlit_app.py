@@ -24,9 +24,13 @@ except Exception as e:
     st.write(f"Secrets error: {e}")
 
 input_dir = '/data/in/tables/'
-client = Client(st.secrets.kbc_url, st.secrets.kbc_token)
+try:
+    client = Client(st.secrets.kbc_url, st.secrets.kbc_token)
+except Exception as e:
+    st.error(f"Failed to initialize client: {e}")
+    client = None
 
-@st.experimental_memo(ttl=7200)
+@st.cache_data(ttl=7200)
 def read_df(file_name, index_col=None, date_col=None):
     return pd.read_csv(input_dir+file_name, index_col=index_col, parse_dates=date_col)
 
