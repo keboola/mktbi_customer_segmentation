@@ -18,6 +18,7 @@ st.set_page_config(
 )
 
 st.write(f"Environment: {os.environ.get('environment', 'not set')}")
+st.write("Secrets:", dict(st.secrets))
 
 input_dir = '/data/in/tables/'
 client = Client(st.secrets.kbc_url, st.secrets.kbc_token)
