@@ -17,10 +17,20 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-input_dir = '/data/in/tables/'
-client = Client(st.secrets.kbc_url, st.secrets.kbc_token)
+st.write(f"Environment: {os.environ.get('environment', 'not set')}")
+try:
+    st.write("Secrets:", dict(st.secrets))
+except Exception as e:
+    st.write(f"Secrets error: {e}")
 
-@st.experimental_memo(ttl=7200)
+input_dir = '/data/in/tables/'
+try:
+    client = Client(st.secrets.kbc_url, st.secrets.kbc_token)
+except Exception as e:
+    st.error(f"Failed to initialize client: {e}")
+    client = None
+
+@st.cache_data(ttl=7200)
 def read_df(file_name, index_col=None, date_col=None):
     return pd.read_csv(input_dir+file_name, index_col=index_col, parse_dates=date_col)
 

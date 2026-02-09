@@ -1,8 +1,8 @@
-streamlit==1.14.0
-streamlit-aggrid==0.3.3
-streamlit-keboola-api==0.2.0
-pandas==1.5.1
-matplotlib==3.6.2
-seaborn==0.12.1
-numpy==1.23.4
-kbcstorage==0.9.4
+streamlit==1.45.0
+streamlit-aggrid
+streamlit-keboola-api
+pandas
+matplotlib
+seaborn
+numpy
+kbcstorage
